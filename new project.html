@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Management System</title>
+  <style>
+    /* Add your CSS styles here */
+    /* This is just an example; you can modify as needed */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>User Management System</h1>
+
+  <!-- Form to add user -->
+  <form id="userForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select><br><br>
+
+    <label for="status">Status:</label>
+    <input type="checkbox" id="status" name="status"><br><br>
+
+    <input type="submit" value="Add User">
+  </form>
+
+  <!-- Table to display user data -->
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="userData"></tbody>
+  </table>
+
+  <script>
+    // JavaScript to handle form submission and table population will go here
+  </script>
+</body>
+</html>
+<script>
+    document.getElementById('userForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+  
+      // Get form values
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const gender = document.getElementById('gender').value;
+      const status = document.getElementById('status').checked ? 'Active' : 'Inactive';
+  
+      // Create table row with user data
+      const newRow = `<tr>
+        <td>${name}</td>
+        <td>${email}</td>
+        <td>${gender}</td>
+        <td>${status}</td>
+      </tr>`;
+  
+      // Append new row to table
+      document.getElementById('userData').innerHTML += newRow;
+  
+      // Clear form fields
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('gender').value = 'male';
+      document.getElementById('status').checked = false;
+    });
+  </script>
+  
